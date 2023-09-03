@@ -11,9 +11,16 @@ app.use(expressLayouts);
 
 app.get('/', (req, res) => {
   res.render('home', {
-    title: 'Page Title',
-    description: 'Page Description',
-    header: 'Page Header',
+    title: 'SUCR',
+    description: 'Set Up Computer Reference',
+    layout: 'layouts/main-layout',
+  });
+});
+
+app.get('/explore', (req, res) => {
+  res.render('explore', {
+    title: 'Explore',
+    description: 'Set Up Computer Reference',
     layout: 'layouts/main-layout',
   });
 });
