@@ -4,7 +4,7 @@ const ejs = require('ejs');
 var methodOverride = require('method-override');
 var expressLayouts = require('express-ejs-layouts');
 const port = 3000;
-
+app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.use(expressLayouts);
@@ -25,6 +25,13 @@ app.get('/explore', (req, res) => {
   });
 });
 
+app.get('/yoursetup', (req, res) => {
+  res.render('yoursetup', {
+    title: 'Your Set Up',
+    description: 'Set Up Computer Reference',
+    layout: 'layouts/main-layout',
+  });
+});
 app.listen(port, () => {
   console.log('Lesgooo');
 });
