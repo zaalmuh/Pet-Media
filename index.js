@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
 const ejs = require('ejs');
-var methodOverride = require('method-override');
-var expressLayouts = require('express-ejs-layouts');
+const methodOverride = require('method-override');
+const expressLayouts = require('express-ejs-layouts');
 const port = 3000;
+require('./utils/db');
+
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
