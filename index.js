@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const expressLayouts = require('express-ejs-layouts');
 const port = 3000;
 require('./utils/db');
+const Data = require('./model/data');
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
@@ -19,11 +20,13 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/explore', (req, res) => {
+app.get('/explore', async (req, res) => {
+  const datas = await Data.find();
   res.render('explore', {
     title: 'Explore',
     description: 'Set Up Computer Reference',
     layout: 'layouts/main-layout',
+    datas,
   });
 });
 
