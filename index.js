@@ -56,3 +56,5 @@ app.post('/yourpet', async (req, res) => {
 app.listen(port, () => {
   console.log('Lesgooo');
 });
+
+// alias graph="git log --all --decorate --oneline --graph"
