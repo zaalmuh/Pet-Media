@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 // Membuat Schema
 
 const data = mongoose.model('data', {
-  postID: Number,
+  postTitle: String,
+  image: String,
   userName: String,
   description: String,
-  image: String,
   likes: Number,
   comments: Number,
 });

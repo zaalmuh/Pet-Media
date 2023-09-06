@@ -6,16 +6,17 @@ const expressLayouts = require('express-ejs-layouts');
 const port = 3000;
 require('./utils/db');
 const Data = require('./model/data');
-
+app.use(methodOverride('_method'));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: true }));
 
 app.use(expressLayouts);
 
 app.get('/', (req, res) => {
   res.render('home', {
-    title: 'SUCR',
-    description: 'Set Up Computer Reference',
+    title: 'Pet Media',
+    description: 'Pet Media',
     layout: 'layouts/main-layout',
   });
 });
@@ -24,18 +25,33 @@ app.get('/explore', async (req, res) => {
   const datas = await Data.find();
   res.render('explore', {
     title: 'Explore',
-    description: 'Set Up Computer Reference',
+    description: 'Pet Media',
     layout: 'layouts/main-layout',
     datas,
   });
 });
 
-app.get('/yoursetup', (req, res) => {
-  res.render('yoursetup', {
-    title: 'Your Set Up',
-    description: 'Set Up Computer Reference',
+app.get('/yourpet', async (req, res) => {
+  const datas = await Data.find();
+  res.render('yourpet', {
+    title: 'Your Pets',
+    description: 'Pet Media',
     layout: 'layouts/main-layout',
+    datas,
   });
+});
+
+app.get('/yourpet/upload', (req, res) => {
+  res.render('upload', {
+    layout: 'layouts/main-layout',
+    title: 'Add Post',
+  });
+});
+
+// Tambah Post
+app.post('/yourpet', async (req, res) => {
+  Data.insertMany(req.body);
+  res.redirect('/yourpet');
 });
 app.listen(port, () => {
   console.log('Lesgooo');
