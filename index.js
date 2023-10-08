@@ -53,6 +53,11 @@ app.post('/yourpet', async (req, res) => {
   Data.insertMany(req.body);
   res.redirect('/yourpet');
 });
+
+app.get('/yourpet/:id', async (req, res) => {
+  const datas = await Data.findById(req.params.id);
+  res.render('detail', { layout: 'layouts/main-layout', title: 'Detail Post', datas });
+});
 app.listen(port, () => {
   console.log('Lesgooo');
 });

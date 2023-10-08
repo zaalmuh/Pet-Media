@@ -3,7 +3,7 @@
     <div class="col-md-4 text-center">
       <div class="card" style="width: 100%">
         <div class="card-body">
-          <img src="img-profile.jpg" alt="" srcset="" class="img-fluid rounded-circle" style="width: 180px" />
+          <img src="" alt="" srcset="" class="img-fluid rounded-circle" style="width: 180px" />
           <h5 class="card-title">Username</h5>
           <h6 class="card-subtitle mb-2 text-body-secondary">ID</h6>
           <button href="#" class="btn btn-primary badge">Connect Twitter</button><br />
@@ -32,8 +32,14 @@
                 <% } %>
                 <p class="card-text"><%= data.description %></p>
               </div>
-              <div class="card-body text-center">
-                <button class="btn btn-outline-primary">All Comments</button>
+              <div class="card-body">
+                <div class="row d-flex justify-content-center">
+                  <div class="col-6 offset-3">
+                    <a href="/yourpet/<%= data._id %>" class="btn btn-success badge">Detail</a>
+                  </div>
+                  <div class="col-md-4"><div class="btn btn-info badge">Edit</div></div>
+                  <div class="col-md-4"><div class="btn btn-danger badge">Delete</div></div>
+                </div>
               </div>
             </div>
           </div>
