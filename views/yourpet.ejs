@@ -1,0 +1,51 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <div class="card" style="width: 100%">
+        <div class="card-body">
+          <img src="" alt="" srcset="" class="img-fluid rounded-circle" style="width: 180px" />
+          <h5 class="card-title">Username</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">ID</h6>
+          <button href="#" class="btn btn-primary badge">Connect Twitter</button><br />
+          <button href="#" class="btn btn-primary badge">Connect Facebook</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card" style="width: 100%">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-7 text-center mt-3">
+            <a href="/yourpet/upload" class="btn btn-outline-primary">➕ Add Collections</a>
+          </div>
+        </div>
+        <div class="row justify-content-center px-2">
+          <% datas.forEach(data => { %>
+          <div class="col-md-4 d-flex justify-content-center my-2">
+            <div class="card" style="width: 18rem">
+              <img src="<%= data.image %>" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title"><%= data.postTitle%></h5>
+                <% if (!data.userName) { %>
+                <p class="card-subtitle mb-2 text-body-secondary">By <span class="UName">Me</span></p>
+                <%} else { %>
+                <p class="card-subtitle mb-2 text-body-secondary">By <span class="UName"><%= data.userName %></span></p>
+                <% } %>
+                <p class="card-text"><%= data.description %></p>
+              </div>
+              <div class="card-body">
+                <div class="row d-flex justify-content-center">
+                  <div class="col-6 offset-3">
+                    <a href="/yourpet/<%= data._id %>" class="btn btn-success badge">Detail</a>
+                  </div>
+                  <div class="col-md-4"><div class="btn btn-info badge">Edit</div></div>
+                  <div class="col-md-4"><div class="btn btn-danger badge">Delete</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
